@@ -10,7 +10,12 @@ title = "Documentation"
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
 [output]
 
 [output.html]
 additional-js = ["mermaid.min.js", "mermaid-init.js"]
+additional-css = ["./src/book/css/mdbook-admonish.css"]

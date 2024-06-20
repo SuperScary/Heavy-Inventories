@@ -1,13 +1,13 @@
 # Class Structure
 
 ## Launch classes
-| Class Name            | Type      | Function                                                                                 |
-|-----------------------|-----------|------------------------------------------------------------------------------------------|
-| HeavyInventories.java | Interface | Contains base logic for all classes to use.                                              |
-| ModBootstrap.java     | Class     | Differentiates the modded environment between client and server.                         |
-| ModClient.java        | Class     | The client sided logic of the mod.                                                       |                               
-| ModServer.java        | Class     | The server sided logic of the mod.                                                       |
-| ModBase.java          | Class     | The common sided logic of the mod. Both ModClient and Mod Server inherit from this class |
+| Class Name            | Type      | Function                                                                                  |
+|-----------------------|-----------|-------------------------------------------------------------------------------------------|
+| HeavyInventories.java | Interface | Contains base logic for all classes to use.                                               |
+| ModBootstrap.java     | Class     | Differentiates the modded environment between client and server.                          |
+| ModClient.java        | Class     | The client sided logic of the mod.                                                        |                               
+| ModServer.java        | Class     | The server sided logic of the mod.                                                        |
+| ModBase.java          | Class     | The common sided logic of the mod. Both ModClient and Mod Server inherit from this class. |
 
 The ModBootstrap class is seen by NeoForge as the main class file since it contains the @Mod annotation. The sole function of 
 this class is to delegate whether the mod is in a client environment or server environment and uses a switch to load
@@ -49,7 +49,3 @@ data files.
         ModClient.java<-->ModBase.java;
         ModBase.java-->Common_Logic[Common Logic];
  ```
-
-### ModBase.java
-This class is inherited by both client and server. It is responsible for the logic needed on both sides. This class also
-registers all Codecs and DataAttachments as well as calling the ModFinder on postLoad.

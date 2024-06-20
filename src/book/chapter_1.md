@@ -9,6 +9,13 @@
 <img src="./img/minecraft_honeycomb_icon.png" alt="Minecraft" width="64"/>
 </center>
 
+```admonish info
+Note: Documentation is unfinished.
+```
+```admonish info
+For Minecraft version 1.21, Heavy Inventories version 4+
+```
+
 Heavy Inventories is a groundbreaking Minecraft addon designed to introduce a rich and immersive gameplay mechanic 
 centered around item weight. Inspired by the weight system from Bethesda's The Elder Scrolls series, Heavy Inventories 
 brings a new level of challenge and realism to your Minecraft experience. This book serves as both the official 

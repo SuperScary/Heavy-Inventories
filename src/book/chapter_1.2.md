@@ -3,8 +3,9 @@
 Heavy Inventories aims to create a seamless experience in gameplay. 
 
 ## Tools
-Tools that are handled by entities or players have modified attributes that affect how hard they hit, how fast they can
-be used, swung, and equipped. 
+Tools wielded by entities or players have modified attributes that significantly influence their performance. These 
+modifications affect how hard the tools hit, how quickly they can be used, and the speed at which they can be swung. 
+Additionally, the ease of equipping these tools is also impacted, adding a layer of strategic depth to gameplay.
 
 | Feature        | Description             |
 |----------------|-------------------------|
@@ -17,7 +18,7 @@ be used, swung, and equipped.
 - Modified jumping height based on Inventory Weight
 
 ## Weight Generation
-- Automagic™ weight file generation
+- Automatic weight file generation
 - Machine Learning based creation
 - Customizable weights 
 - 

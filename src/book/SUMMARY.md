@@ -2,6 +2,9 @@
 
 - [What is Heavy Inventories](chapter_1.md)
   - [Class Structure](chapter_1.1.md)
+    - [ModBase.java](chapter_1.1.1.md)
+    - [ModClient.java](chapter_1.1.2.md)
+    - [ModServer.java](chapter_1.1.3.md)
   - [Features](chapter_1.2.md)
 - [Setup](chapter_2.md)
 - [Understanding Weight Files](chapter_3.md)
@@ -24,3 +27,4 @@
   - [Color Ratios](chapter_9.3.md)
   - [Figure Material](chapter_9.4.md)
   - [How is This Data Used?](chapter_9.5.md)
+- [Heavy Inventories API](chapter_10.md)
