@@ -1,0 +1,18 @@
+# Summary
+
+- [What is Heavy Inventories](./chapter_1.md)
+  - [Features](./chapter_1.1.md)
+- [Setup](./chapter_2.md)
+- [Understanding Weight Files](./chapter_3.md)
+- [Data Manipulation](./chapter_4.md)
+- [Sided Configurations](./chapter_5.md)
+- [Item Weights](./chapter_6.md)
+- [Player Weights](./chapter_7.md)
+- [Machine Learning](./chapter_8.md)
+  - [The Aim](./chapter_8.1.md)
+  - [Conventional Methods](./chapter_8.2.md)
+- [Understanding the Machine Learning Logic](./chapter_9.md)
+  - [How Does it Work](./chapter_9.1.md)
+  - [The Recipe Finder](./chapter_9.2.md)
+  - [Color Ratios](./chapter_9.3.md)
+  - [Figure Material](./chapter_9.4.md)

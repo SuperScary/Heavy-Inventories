@@ -2,5 +2,5 @@
 authors = ["SuperScary"]
 language = "en"
 multilingual = false
-src = "book/src"
+src = "src"
 title = "Heavy Inventories"
