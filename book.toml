@@ -1,0 +1,6 @@
+[book]
+authors = ["SuperScary"]
+language = "en"
+multilingual = false
+src = "book/src"
+title = "Heavy Inventories"

@@ -24,4 +24,7 @@ run
 runs
 run-data
 
+# mdBook
+book/book
+
 repo
