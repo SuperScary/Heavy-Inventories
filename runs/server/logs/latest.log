@@ -1,0 +1,115 @@
+[18Jun2024 21:32:45.503] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--nogui, --launchTarget, forgeserveruserdev, --gameDir, ., --fml.neoForgeVersion, 21.0.0-beta, --fml.fmlVersion, 4.0.1, --fml.mcVersion, 1.21, --fml.neoFormVersion, 20240613.152323]
+[18Jun2024 21:32:45.504] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.3+9-LTS
+[18Jun2024 21:32:45.506] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.2+main.4612c65f starting: java version 21.0.3 by Amazon.com Inc.; OS Windows 11 arch amd64 version 10.0
+[18Jun2024 21:32:45.584] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserveruserdev
+[18Jun2024 21:32:45.614] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Fylow/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.13.4+mixin.0.8.5/8adf0cff1795a169141b9e16ad7b9f6e2527a990/sponge-mixin-0.13.4+mixin.0.8.5.jar%23136!/ Service=ModLauncher Env=SERVER
+[18Jun2024 21:32:45.730] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.0-beta.jar" [locator: neoforge devenv provider ([D:\Minecraft\Heavy-Inventories\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.0-beta\neoforge-21.0.0-beta.jar])]
+[18Jun2024 21:32:45.738] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.0-beta.jar" [locator: neoforge devenv provider ([D:\Minecraft\Heavy-Inventories\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.0-beta\neoforge-21.0.0-beta.jar])]
+[18Jun2024 21:32:45.744] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[18Jun2024 21:32:45.750] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.0-beta.jar" [locator: userdev mods and services, reader: mod manifest]
+[18Jun2024 21:32:45.763] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found gamelibrary file "mixinextras-neoforge-0.3.5.jar" [locator: userdev mods and services, reader: mod manifest]
+[18Jun2024 21:32:45.833] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: mixinextras-neoforge-0.3.5.jar. Using Mod File: C:\Users\Fylow\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.3.5\ef3ffcf309dae656517b2f120189b1c9b21737dd\mixinextras-neoforge-0.3.5.jar
+[18Jun2024 21:32:45.833] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[18Jun2024 21:32:45.933] [main/INFO] [net.neoforged.fml.loading.FMLServiceProvider/CORE]: Loading coremod script-engine for [neoforge]
+[18Jun2024 21:32:46.431] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserveruserdev' with arguments [--gameDir, ., --nogui]
+[18Jun2024 21:32:50.144] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[18Jun2024 21:32:50.144] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[18Jun2024 21:32:50.147] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[18Jun2024 21:32:50.147] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[18Jun2024 21:32:50.148] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[18Jun2024 21:32:50.183] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.0.0-beta, for MC 1.21
+[18Jun2024 21:32:50.328] [modloading-worker-0/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/Minecraft for invalid dist DEDICATED_SERVER
+[18Jun2024 21:32:50.329] [modloading-worker-0/ERROR] [net.neoforged.fml.javafmlmod.FMLModContainer/]: Exception caught during firing event: null
+	Index: 0
+	Listeners:
+		0: superscary.heavyinventories.ModBase$$Lambda/0x0000025a46d3d338@6ff136cc
+java.lang.ExceptionInInitializerError
+	at TRANSFORMER/heavyinventories@4.0.0A-1.21/superscary.heavyinventories.ModBase.postLoad(ModBase.java:34)
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:26)
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350)
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315)
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:169)
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.lambda$dispatchParallelEvent$4(ModLoader.java:171)
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:230)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.RuntimeException: Attempted to load class net/minecraft/client/Minecraft for invalid dist DEDICATED_SERVER
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.common.asm.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:60)
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88)
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120)
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50)
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190)
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298)
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311)
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298)
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at TRANSFORMER/heavyinventories@4.0.0A-1.21/superscary.heavyinventories.data.util.DisallowedMods.<clinit>(DisallowedMods.java:22)
+	... 15 more
+
+[18Jun2024 21:32:50.330] [modloading-worker-0/ERROR] [net.neoforged.fml.ModContainer/LOADING]: Caught exception during event FMLLoadCompleteEvent dispatch for modid heavyinventories
+java.lang.ExceptionInInitializerError: null
+	at TRANSFORMER/heavyinventories@4.0.0A-1.21/superscary.heavyinventories.ModBase.postLoad(ModBase.java:34) ~[%23194!/:?]
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:26) ~[bus-8.0.1.jar%23149!/:?]
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23149!/:?]
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23149!/:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:169) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.lambda$dispatchParallelEvent$4(ModLoader.java:171) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:230) ~[loader-4.0.1.jar%23145!/:4.0]
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) [?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) [?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) [?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) [?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) [?:?]
+Caused by: java.lang.RuntimeException: Attempted to load class net/minecraft/client/Minecraft for invalid dist DEDICATED_SERVER
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.common.asm.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:60) ~[loader-4.0.1.jar:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-11.0.2.jar:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-11.0.2.jar:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-11.0.2.jar:?]
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190) ~[securejarhandler-3.0.8.jar:?]
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?]
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311) ~[securejarhandler-3.0.8.jar:?]
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?]
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+	at TRANSFORMER/heavyinventories@4.0.0A-1.21/superscary.heavyinventories.data.util.DisallowedMods.<clinit>(DisallowedMods.java:22) ~[?:?]
+	... 15 more
+[18Jun2024 21:32:50.337] [main/FATAL] [net.neoforged.fml.ModLoader/LOADING]: Failed to wait for future Complete loading of 3 mods, 1 errors found
+[18Jun2024 21:32:50.403] [main/FATAL] [net.neoforged.neoforge.common.NeoForgeMod/]: Preparing crash report with UUID e1fa7fa3-6001-4dd3-b903-66a4b256c432
+[18Jun2024 21:32:50.403] [main/FATAL] [net.neoforged.neoforge.server.loading.ServerModLoader/]: Crash report saved to .\crash-reports\crash-2024-06-18_21.32.50-fml.txt
+[18Jun2024 21:32:50.404] [main/FATAL] [net.neoforged.neoforge.common.NeoForgeMod/]: Preparing crash report with UUID 04dcbadf-d288-4697-9110-4ac746cb350d
+[18Jun2024 21:32:50.404] [main/ERROR] [net.minecraft.server.Main/FATAL]: Failed to start the minecraft server
+net.neoforged.fml.ModLoadingException: Loading errors encountered:
+	- Heavy Inventories (heavyinventories) encountered an error while dispatching the net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent event
+	  java.lang.ExceptionInInitializerError: null
+
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.waitForFuture(ModLoader.java:280) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.dispatchParallelTask(ModLoader.java:243) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.ModLoader.dispatchParallelEvent(ModLoader.java:170) ~[loader-4.0.1.jar%23145!/:4.0]
+	at TRANSFORMER/neoforge@21.0.0-beta/net.neoforged.neoforge.internal.CommonModLoader.finish(CommonModLoader.java:80) ~[neoforge-21.0.0-beta.jar%23193!/:?]
+	at TRANSFORMER/neoforge@21.0.0-beta/net.neoforged.neoforge.server.loading.ServerModLoader.load(ServerModLoader.java:34) ~[neoforge-21.0.0-beta.jar%23193!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.Main.main(Main.java:124) ~[neoforge-21.0.0-beta.jar%23192!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.loading.targets.CommonLaunchHandler.serverService(CommonLaunchHandler.java:128) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.loading.targets.NeoForgeServerUserdevLaunchHandler.runService(NeoForgeServerUserdevLaunchHandler.java:23) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.1/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.1.jar%23145!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.2.jar%23126!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.2/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.2.jar%23126!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
