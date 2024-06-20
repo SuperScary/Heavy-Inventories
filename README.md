@@ -12,10 +12,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/license-mit.svg)](https://forthebadge.com)
-
-<center>
-<a href="https://superscary.github.io/Heavy-Inventories/book/chapter_1.html"><svg xmlns="http://www.w3.org/2000/svg" width="289.5312805175781" height="35" viewBox="0 0 289.5312805175781 35"><rect width="125.28126525878906" height="35" fill="#deff00"/><rect x="125.28126525878906" width="164.25001525878906" height="35" fill="#000000"/><text x="62.64063262939453" y="21.5" font-size="12" font-family="'Roboto', sans-serif" fill="#000000" text-anchor="middle" letter-spacing="2">LOOKING FOR</text><text x="207.4062728881836" y="21.5" font-size="12" font-family="'Montserrat', sans-serif" fill="#deff00" text-anchor="middle" font-weight="900" letter-spacing="2">DOCUMENTATION?</text></svg></a>
-</center>
+[![Documentation](https://raw.githubusercontent.com/SuperScary/Heavy-Inventories/main/src/book/img/looking-for-documentation.svg)](https://superscary.github.io/Heavy-Inventories/book/chapter_1.html)
 
 # Heavy Inventories
 Heavy Inventories is a machine learning mechanics based mod that dynamically creates weights for items. When a player is carrying
