@@ -5,14 +5,14 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.common.NeoForge;
-import net.superscary.heavyinventories.neoforge.hooks.TooltipHooks;
+import net.superscary.heavyinventories.neoforge.hooks.ModHooks;
 
 public class HeavyInventoriesNeoForgeClient extends HeavyInventoriesNeoForgeBase {
 
     public HeavyInventoriesNeoForgeClient(ModContainer modContainer, IEventBus modEventBus) {
         super(modContainer, modEventBus);
 
-        NeoForge.EVENT_BUS.addListener(TooltipHooks::hookTooltip);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookTooltip);
     }
 
     @Override

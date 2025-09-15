@@ -6,7 +6,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
+import net.superscary.heavyinventories.api.format.Format;
 import net.superscary.heavyinventories.api.resource.IResourceList;
+import net.superscary.heavyinventories.api.util.Functions;
 
 public final class CalculateWeight {
 
@@ -22,7 +24,7 @@ public final class CalculateWeight {
             }
         }
 
-        return weight > 0 ? weight : from(new ItemStack(itemLike), level);
+        return Functions.either(Format.format(weight), from(new ItemStack(itemLike), level), weight > 0);
     }
 
     public static float from(Fluid fluid, int millibuckets, Level level) {
@@ -40,7 +42,7 @@ public final class CalculateWeight {
             }
         }
 
-        return weight;
+        return Format.format(weight);
     }
 
     public static float from(Player player, Level level) {
@@ -53,7 +55,7 @@ public final class CalculateWeight {
      * @return A {@link Weight} of the {@link ItemStack}.
      */
     private static float from(ItemStack itemStack, Level level) {
-        return WeightOverride.get(itemStack).getWeight();
+        return Format.format(WeightOverride.get(itemStack).getWeight());
     }
 
 }

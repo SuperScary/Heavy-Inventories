@@ -1,5 +1,6 @@
 package net.superscary.heavyinventories;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
@@ -23,4 +24,8 @@ public interface HeavyInventories {
     Level getClientLevel();
 
     MinecraftServer getCurrentServer();
+
+    static boolean isShiftPressed () {
+        return Screen.hasShiftDown();
+    }
 }
