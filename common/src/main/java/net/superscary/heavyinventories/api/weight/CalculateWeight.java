@@ -22,7 +22,7 @@ public final class CalculateWeight {
             }
         }
 
-        return weight > 0 ? weight : 1;
+        return weight > 0 ? weight : from(new ItemStack(itemLike), level);
     }
 
     public static float from(Fluid fluid, int millibuckets, Level level) {
@@ -35,9 +35,7 @@ public final class CalculateWeight {
             IResourceList resources = IResourceList.getResourceList(itemStack.getItem(), level);
             for (var item : resources.getResources()) {
                 for (var amount : item.values()) {
-                    if (itemStack.getCount() >= amount) {
-                        weight += from(itemStack, level);
-                    }
+                    weight += from(itemStack, level) * amount;
                 }
             }
         }
@@ -50,14 +48,12 @@ public final class CalculateWeight {
     }
 
     /**
-     * TODO: Static return 1 for now for testing if this implementation works. We should use {@link WeightOverride} or a default min value.
      * @param itemStack The item to get the weight for.
      * @param level The level to get the weight from.
-     * @return The weight of the {@link ItemStack}.
+     * @return A {@link Weight} of the {@link ItemStack}.
      */
     private static float from(ItemStack itemStack, Level level) {
-        int amount = itemStack.getCount();
-        return (float) (0.1 * amount);
+        return WeightOverride.get(itemStack).getWeight();
     }
 
 }

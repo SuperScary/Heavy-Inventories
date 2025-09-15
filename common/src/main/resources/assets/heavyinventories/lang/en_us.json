@@ -1,0 +1,7 @@
+{
+  "tooltip.heavyinventories.item_weight": "Weight: %s",
+  "tooltip.heavyinventories.item_density": "Density: %s",
+  "tooltip.heavyinventories.item_stack_weight": "Stack Weight: %s",
+  "tooltip.heavyinventories.item_stack_density": "Stack Density: %s",
+  "tooltip.heavyinventories.item_max_stack_weight": "Max Stack Weight: %s"
+}
