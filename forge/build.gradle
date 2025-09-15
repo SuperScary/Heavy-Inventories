@@ -16,6 +16,10 @@ jar {
     }
 }
 
+repositories {
+    maven { url "https://maven.shedaniel.me/" }
+}
+
 minecraft {
     mappings channel: 'official', version: minecraft_version
 
@@ -77,6 +81,9 @@ dependencies {
 
     // Forge's hack fix
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+
+    // Cloth Config
+    api fg.deobf("me.shedaniel.cloth:cloth-config-forge:15.0.140")
 }
 
 publishing {
