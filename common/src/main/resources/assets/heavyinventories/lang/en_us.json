@@ -1,7 +1,12 @@
 {
   "tooltip.heavyinventories.item_weight": "Weight: %s",
   "tooltip.heavyinventories.item_density": "Density: %s",
-  "tooltip.heavyinventories.item_stack_weight": "Stack Weight: %s",
-  "tooltip.heavyinventories.item_stack_density": "Stack Density: %s",
-  "tooltip.heavyinventories.item_max_stack_weight": "Max Stack Weight: %s"
+  "tooltip.heavyinventories.item_stack_weight": "§8Stack Weight: %s",
+  "tooltip.heavyinventories.item_stack_density": "§8Stack Density: %s",
+  "tooltip.heavyinventories.item_max_stack_weight": "Max Stack Weight: %s",
+  "tooltip.heavyinventories.hold_shift": "§8Hold §r§e[SHIFT] §r§8for more info",
+
+  "chat.heavyinventories.no_jump": "You cannot jump while %s!",
+  "chat.heavyinventories.encumbered": "encumbered",
+  "chat.heavyinventories.over_encumbered": "over encumbered"
 }

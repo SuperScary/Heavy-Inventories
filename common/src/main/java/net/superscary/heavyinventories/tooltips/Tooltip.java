@@ -21,9 +21,14 @@ public class Tooltip {
         tooltip.add(Component.translatable("tooltip.heavyinventories.item_weight", weight));
         if (stack.getCount() > 1) tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getCount()));
 
-        if (HeavyInventories.isShiftPressed() && stack.getCount() < stack.getMaxStackSize()) {
-            tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getMaxStackSize()));
+        if (stack.getCount() < stack.getMaxStackSize()) {
+            if (HeavyInventories.isShiftPressed()) {
+                tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getMaxStackSize()));
+            } else {
+                tooltip.add(Component.translatable("tooltip.heavyinventories.hold_shift"));
+            }
         }
+
         return tooltip;
     }
 

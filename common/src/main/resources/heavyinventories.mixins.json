@@ -4,7 +4,9 @@
   "package": "net.superscary.heavyinventories.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
+  "mixins": [
+    "PlayerMixin"
+  ],
   "client": [
   ],
   "server": [],
