@@ -1,7 +1,7 @@
 package net.superscary.heavyinventories.api.player;
 
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.superscary.heavyinventories.api.util.Functions;
 import net.superscary.heavyinventories.api.weight.CalculateWeight;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class PlayerHolder {
      * Main player update method.
      */
     public void update() {
-        setWeight(CalculateWeight.from(getPlayer()));
+        setWeight(PlayerWeightCache.getOrCompute(getPlayer()));
         this.encumbered = isEncumbered();
         this.overEncumbered = isOverEncumbered();
     }
@@ -89,6 +89,9 @@ public class PlayerHolder {
      * @return True if the player is encumbered, false otherwise.
      */
     public boolean isEncumbered() {
+        // Allow the percentage range to be 100%-110% with strength potion.
+        if (hasStrength()) return getEncumberedPercentage() >= 100 && getEncumberedPercentage() < 110;
+
         return getEncumberedPercentage() >= 90 && getEncumberedPercentage() < 100;
     }
 
@@ -98,7 +101,17 @@ public class PlayerHolder {
      * @return True if the player is over encumbered, false otherwise.
      */
     public boolean isOverEncumbered() {
+        // Allow the percentage range to be 115%-125% with strength potion.
+        if (hasStrength()) return getEncumberedPercentage() >= 115 && getEncumberedPercentage() < 125;
         return getEncumberedPercentage() >= 100;
+    }
+
+    /**
+     * Allows the strength effect to be checked to determine encumbrance.
+     * @return True if the player has the strength effect, false otherwise.
+     */
+    private boolean hasStrength() {
+        return getPlayer().hasEffect(MobEffects.DAMAGE_BOOST);
     }
 
     public float getEncumberedPercentage() {

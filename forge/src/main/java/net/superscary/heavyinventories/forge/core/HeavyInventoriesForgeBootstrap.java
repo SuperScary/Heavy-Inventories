@@ -8,7 +8,10 @@ import net.superscary.heavyinventories.HeavyInventories;
 @Mod(HeavyInventories.MOD_ID)
 public class HeavyInventoriesForgeBootstrap {
 
-    public HeavyInventoriesForgeBootstrap(ModLoadingContext modLoadingContext) {
+    public HeavyInventoriesForgeBootstrap() {
+        @SuppressWarnings("deprecation")
+        var modLoadingContext = ModLoadingContext.get(); // just to satisfy the 1.21.1 no-arg constructor. pass as an arg in the constructor for later versions.
+
         switch (FMLEnvironment.dist) {
             case CLIENT -> new HeavyInventoriesForgeClient(modLoadingContext);
             case DEDICATED_SERVER -> new HeavyInventoriesForgeServer(modLoadingContext);

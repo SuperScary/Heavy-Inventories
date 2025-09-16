@@ -17,7 +17,14 @@ public abstract class HeavyInventoriesNeoForgeBase extends ModBase {
         CommonClass.init();
 
         NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayer);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayerClone);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayerChangedDimension);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayerPickupItem);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookOnCraft);
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookOnSmelt);
         NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayerMove);
+
+        NeoForge.EVENT_BUS.addListener(ModHooks::hookCommands);
     }
 
     @Nullable

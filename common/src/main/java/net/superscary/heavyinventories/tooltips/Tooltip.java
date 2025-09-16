@@ -23,7 +23,7 @@ public class Tooltip {
 
         if (stack.getCount() < stack.getMaxStackSize()) {
             if (HeavyInventories.isShiftPressed()) {
-                tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getMaxStackSize()));
+                tooltip.add(Component.translatable("tooltip.heavyinventories.item_max_stack_weight", weight * stack.getMaxStackSize()));
             } else {
                 tooltip.add(Component.translatable("tooltip.heavyinventories.hold_shift"));
             }

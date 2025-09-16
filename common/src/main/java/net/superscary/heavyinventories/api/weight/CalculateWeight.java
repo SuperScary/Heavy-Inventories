@@ -58,7 +58,7 @@ public final class CalculateWeight {
      * @return A {@link Weight} of the {@link ItemStack}.
      */
     private static float from(ItemStack itemStack) {
-        return Format.format(WeightOverride.get(itemStack).getWeight());
+        return Format.format(WeightCache.get(itemStack.getItem(), () -> WeightOverride.get(itemStack.getItem()).getWeight()) * itemStack.getCount());
     }
 
 }
