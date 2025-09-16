@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.heavyinventories.bracing"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "heavyinventories:bracing"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 7
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 12,
+    "per_level_above_first": 7
+  },
+  "slots": [
+    "chest"
+  ],
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 5
+}

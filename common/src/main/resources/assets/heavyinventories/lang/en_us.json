@@ -1,4 +1,6 @@
 {
+  "title.heavyinventories.config": "Heavy Inventories Config",
+
   "tooltip.heavyinventories.item_weight": "Weight: %s",
   "tooltip.heavyinventories.item_density": "Density: %s",
   "tooltip.heavyinventories.item_stack_weight": "§8Stack Weight: %s",
@@ -7,8 +9,10 @@
   "tooltip.heavyinventories.hold_shift": "§8Hold §r§e[SHIFT] §r§8for more info",
 
   "chat.heavyinventories.no_jump": "You cannot jump while %s!",
-  "chat.heavyinventories.encumbered": "encumbered",
-  "chat.heavyinventories.over_encumbered": "over encumbered",
+  "chat.heavyinventories.encumbered": "Encumbered",
+  "chat.heavyinventories.over_encumbered": "Over Encumbered",
   "chat.heavyinventories.command_set.failure": "Failed to set weight to %s!",
-  "chat.heavyinventories.command_set.success": "Successfully set weight to %s!"
+  "chat.heavyinventories.command_set.success": "Successfully set weight to %s!",
+
+  "enchantment.heavyinventories.bracing": "Bracing"
 }

@@ -2,7 +2,6 @@ package net.superscary.heavyinventories.api.player;
 
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.superscary.heavyinventories.api.weight.CalculateWeight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +14,23 @@ import java.util.List;
 public class PlayerHolder {
 
     private static List<PlayerHolder> PLAYERS = new ArrayList<>();
+    private static float STARTING_WEIGHT = 1000f;
 
     private final Player player;
     private float weight;
     private float maxWeight;
     private boolean encumbered;
     private boolean overEncumbered;
+    private float bracingOffset;
+    private int bracingAppliedLevel;
 
     public PlayerHolder(Player player) {
         this.player = player;
         this.weight = 0;
-        this.maxWeight = 1_000;
+        this.maxWeight = STARTING_WEIGHT;
         this.encumbered = false;
         this.overEncumbered = false;
+        this.bracingOffset = 0f;
     }
 
     /**
@@ -80,7 +83,27 @@ public class PlayerHolder {
      * @return The maximum weight.
      */
     public float getMaxWeight() {
+        return maxWeight + getBracingOffset();
+    }
+
+    public float getBaseMaxWeight() {
         return maxWeight;
+    }
+
+    public void setBracingOffset(float offset) {
+        bracingOffset = offset;
+    }
+
+    public void addWeightOffset(float offset) {
+        bracingOffset += offset;
+    }
+
+    public void subtractWeightOffset(float offset) {
+        bracingOffset -= offset;
+    }
+
+    public float getBracingOffset() {
+        return bracingOffset;
     }
 
     /**
@@ -89,6 +112,8 @@ public class PlayerHolder {
      * @return True if the player is encumbered, false otherwise.
      */
     public boolean isEncumbered() {
+        if (getPlayer().isCreative()) return false;
+
         // Allow the percentage range to be 100%-110% with strength potion.
         if (hasStrength()) return getEncumberedPercentage() >= 100 && getEncumberedPercentage() < 110;
 
@@ -101,6 +126,8 @@ public class PlayerHolder {
      * @return True if the player is over encumbered, false otherwise.
      */
     public boolean isOverEncumbered() {
+        if (getPlayer().isCreative()) return false;
+
         // Allow the percentage range to be 115%-125% with strength potion.
         if (hasStrength()) return getEncumberedPercentage() >= 115 && getEncumberedPercentage() < 125;
         return getEncumberedPercentage() >= 100;
@@ -126,6 +153,28 @@ public class PlayerHolder {
         return !encumbered && !overEncumbered;
     }
 
+    public void applyBracing(int level, float perLevelPct, float capPct) {
+        if (level < 0) level = 0;
+        if (level == bracingAppliedLevel) return;
+
+        addWeightOffset(-bracingOffset);
+
+        float base = getBaseMaxWeight();
+        float pct = Math.min(perLevelPct * level, capPct);
+        float offset = (base * pct);
+
+        addWeightOffset(offset);
+        bracingOffset = offset;
+        bracingAppliedLevel = level;
+    }
+
+    public void clearBracing() {
+        // remove any previous bonus
+        addWeightOffset(-bracingOffset);
+        bracingOffset = 0f;
+        bracingAppliedLevel = 0;
+    }
+
     /**
      * Gets a list of all players.
      * @return The list of players.
@@ -149,6 +198,10 @@ public class PlayerHolder {
         PlayerHolder playerHolder = new PlayerHolder(player);
         PLAYERS.add(playerHolder);
         return playerHolder;
+    }
+
+    public static void setWeightStarting(float startingWeight) {
+        PlayerHolder.STARTING_WEIGHT = startingWeight;
     }
 
 }

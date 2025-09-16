@@ -12,7 +12,7 @@ public class PlayerEvents {
      */
     public static void onPlayerTick(Player player) {
         long time = player.level().getGameTime() % 20;
-        if (time == 0 || time == 5 || time == 10 || time == 15) {
+        if (time == 0/* || time == 5 || time == 10 || time == 15*/) {
             PlayerWeightCache.markDirty(player);
         }
     }
@@ -56,6 +56,22 @@ public class PlayerEvents {
     }
 
     public static void onSmelt(Player player) {
+        PlayerWeightCache.markDirty(player);
+    }
+
+    /**
+     * Used for weight modifiers on enchanted armor pieces.
+     * @param player The player.
+     */
+    public static void onEquipItem(Player player) {
+        PlayerWeightCache.markDirty(player);
+    }
+
+    /**
+     * Used for weight modifiers on enchanted armor pieces.
+     * @param player The player.
+     */
+    public static void onUnequipItem(Player player) {
         PlayerWeightCache.markDirty(player);
     }
 
