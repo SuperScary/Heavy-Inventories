@@ -15,4 +15,8 @@ public class Functions {
         return condition ? conditionTrue : conditionFalse;
     }
 
+    public static <T> T either(boolean condition, T valueTrue, T valueFalse) {
+        return either(valueTrue, valueFalse, condition);
+    }
+
 }

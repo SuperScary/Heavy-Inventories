@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.heavyinventories.reinforced"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "heavyinventories:reinforced"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 12,
+    "per_level_above_first": 10
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 8,
+    "per_level_above_first": 9
+  },
+  "slots": [
+    "legs"
+  ],
+  "supported_items": "#minecraft:enchantable/leg_armor",
+  "weight": 5
+}

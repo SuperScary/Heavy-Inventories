@@ -14,5 +14,7 @@
   "chat.heavyinventories.command_set.failure": "Failed to set weight to %s!",
   "chat.heavyinventories.command_set.success": "Successfully set weight to %s!",
 
-  "enchantment.heavyinventories.bracing": "Bracing"
+  "enchantment.heavyinventories.bracing": "Bracing",
+  "enchantment.heavyinventories.reinforced": "Reinforced",
+  "enchantment.heavyinventories.surefooted": "Surefooted"
 }

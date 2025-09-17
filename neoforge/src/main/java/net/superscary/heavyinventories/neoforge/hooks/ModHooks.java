@@ -47,21 +47,33 @@ public class ModHooks {
         PlayerEvents.onSmelt(event.getEntity());
     }
 
+    public static void hookPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        PlayerEvents.logout(event.getEntity());
+    }
+
     public static void hookPlayerMove(MovementInputUpdateEvent event) {
         var holder = PlayerHolder.getOrCreate(event.getEntity());
-        if (holder.isEncumbered()) {
-            event.getInput().forwardImpulse = event.getInput().forwardImpulse * 0.25f;
-            event.getInput().leftImpulse = event.getInput().leftImpulse * 0.25f;
-        } else if (holder.isOverEncumbered()) {
-            event.getInput().forwardImpulse = 0;
-            event.getInput().leftImpulse = 0;
+        if (event.getEntity().isCreative()) return;
+
+        if (!holder.isEncumbered() && !holder.isOverEncumbered()) return;
+
+        var input = event.getInput();
+        var mult = holder.getSureFootedMult();
+
+        if (mult == 1.0f) {
+            if (holder.isOverEncumbered()) mult = 0.f;
+            else if (holder.isEncumbered()) mult = 0.25f;
         }
+
+        input.forwardImpulse *= mult;
+        input.leftImpulse *= mult;
     }
 
     public static void hookPlayerEquip(LivingEquipmentChangeEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
+        if(!event.getSlot().isArmor()) return;
 
-        PlayerEvents.onEquipItem(player);
+        //PlayerEvents.onEquipItem(player);
         PlayerEvents.onUnequipItem(player);
     }
 
@@ -71,7 +83,7 @@ public class ModHooks {
 
     public static void hookGui(RenderGuiEvent.Post event) {
         var mc = Minecraft.getInstance();
-        if (mc.player == null || mc.options.hideGui || mc.screen != null) return;
+        if (mc.player == null || mc.player.isCreative() || mc.options.hideGui || mc.screen != null) return;
 
         var g = event.getGuiGraphics();
         int sw = mc.getWindow().getGuiScaledWidth();

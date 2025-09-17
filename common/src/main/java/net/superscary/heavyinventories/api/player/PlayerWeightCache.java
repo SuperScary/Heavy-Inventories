@@ -15,7 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class PlayerWeightCache {
     private static final Map<UUID, Entry> CACHE = new ConcurrentHashMap<>();
 
-    private PlayerWeightCache() {}
+    private PlayerWeightCache() {
+    }
 
     public static float getOrCompute(Player player) {
         var id = player.getUUID();
@@ -35,25 +36,31 @@ public final class PlayerWeightCache {
         return w;
     }
 
-    /** Mark a player's cache entry as dirty (recompute next read). */
+    /**
+     * Mark a player's cache entry as dirty (recompute next read).
+     */
     public static void markDirty(Player player) {
         CACHE.computeIfAbsent(player.getUUID(), k -> new Entry()).dirty = true;
         PlayerHolder.getOrCreate(player).update();
     }
 
-    /** Clear all (e.g., on datapack/config reload). */
+    /**
+     * Clear all (e.g., on datapack/config reload).
+     */
     public static void clearAll() {
         CACHE.clear();
     }
 
-    /** Remove one player (e.g., on logout). */
+    /**
+     * Remove one player (e.g., on logout).
+     */
     public static void remove(Player player) {
         CACHE.remove(player.getUUID());
     }
 
     private static final class Entry {
         volatile float weight = 0f;
-        volatile int   lastFingerprint = 0;
+        volatile int lastFingerprint = 0;
         volatile boolean dirty = true;
     }
 
@@ -64,8 +71,8 @@ public final class PlayerWeightCache {
      */
     private static int fingerprint(Player p) {
         int h = 1;
-        for (ItemStack s : p.getInventory().items)   h = mix(h, s);
-        for (ItemStack s : p.getInventory().armor)   h = mix(h, s);
+        for (ItemStack s : p.getInventory().items) h = mix(h, s);
+        for (ItemStack s : p.getInventory().armor) h = mix(h, s);
         for (ItemStack s : p.getInventory().offhand) h = mix(h, s);
         return h;
     }

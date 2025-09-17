@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "heavyinventories:bracing"
+    "heavyinventories:bracing",
+    "heavyinventories:reinforced",
+    "heavyinventories:surefooted"
   ]
 }

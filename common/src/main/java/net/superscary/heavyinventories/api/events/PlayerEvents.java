@@ -1,6 +1,7 @@
 package net.superscary.heavyinventories.api.events;
 
 import net.minecraft.world.entity.player.Player;
+import net.superscary.heavyinventories.api.player.PlayerHolder;
 import net.superscary.heavyinventories.api.player.PlayerWeightCache;
 
 public class PlayerEvents {
@@ -63,16 +64,16 @@ public class PlayerEvents {
      * Used for weight modifiers on enchanted armor pieces.
      * @param player The player.
      */
-    public static void onEquipItem(Player player) {
-        PlayerWeightCache.markDirty(player);
-    }
-
-    /**
-     * Used for weight modifiers on enchanted armor pieces.
-     * @param player The player.
-     */
     public static void onUnequipItem(Player player) {
         PlayerWeightCache.markDirty(player);
+        var holder = PlayerHolder.getOrCreate(player);
+        holder.clearBracing();
+        holder.clearReinforced();
+        holder.clearSureFooted();
+    }
+
+    public static void logout(Player player) {
+        PlayerWeightCache.remove(player);
     }
 
 }
