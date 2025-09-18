@@ -10,6 +10,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class WriteFile {
 
@@ -63,18 +64,6 @@ public class WriteFile {
     }
 
     private static JsonObject loadOrCreate(File file) {
-        /*JsonObject root = new JsonObject();
-        if (file.exists()) {
-            try (FileReader reader = new FileReader(file)) {
-                root = GSON.fromJson(reader, JsonObject.class);
-                if (root == null) {
-                    root = new JsonObject();
-                }
-            } catch (IOException e) {
-                // e.printStackTrace();
-            }
-        }
-        return root;*/
         try {
             ensureParentDirectories(file.toPath());
 
@@ -114,7 +103,7 @@ public class WriteFile {
                 GSON.toJson(root, writer);
             }
             // Atomic replace where supported; otherwise best-effort replace
-            Files.move(temp, target, java.nio.file.StandardCopyOption.REPLACE_EXISTING, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
+            Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
         } catch (IOException e) {
             // Best effort fallback: try direct write if atomic move failed earlier
             try (Writer writer = Files.newBufferedWriter(target, StandardCharsets.UTF_8)) {

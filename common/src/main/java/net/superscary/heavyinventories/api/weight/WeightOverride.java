@@ -17,16 +17,12 @@ public final class WeightOverride {
 
     private WeightOverride() {}
 
-    public static Weight get(ItemLike itemLike) {
+    public static float get(ItemLike itemLike) {
         return get(new ItemStack(itemLike, 1));
     }
 
-    public static Weight get(ItemStack itemStack) {
-        return () -> ReadFile.get(itemStack.getItem(), DataType.WEIGHT) * itemStack.getCount();
-    }
-
-    public static void put(ItemLike itemLike, Weight weight) {
-        put(itemLike, weight.getWeight());
+    public static float get(ItemStack itemStack) {
+        return ReadFile.get(itemStack.getItem(), DataType.WEIGHT) * itemStack.getCount();
     }
 
     public static void put(ItemLike itemLike, float weight) {

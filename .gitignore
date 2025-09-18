@@ -25,3 +25,5 @@ runs
 
 .idea
 /neoforge/src/generated/resources/.cache/
+
+.vscode
