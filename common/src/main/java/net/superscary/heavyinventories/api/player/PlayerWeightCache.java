@@ -13,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * or when an inventory fingerprint changes.
  */
 public final class PlayerWeightCache {
+
     private static final Map<UUID, Entry> CACHE = new ConcurrentHashMap<>();
 
     private PlayerWeightCache() {

@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.superscary.heavyinventories.api.weight.WeightCache;
 
 import java.io.*;
@@ -11,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 public class WriteFile {
 
@@ -25,15 +28,12 @@ public class WriteFile {
         File file = new File(fileName);
         JsonObject root = loadOrCreate(file);
 
-        // Ensure the field object exists
         JsonObject fieldObj = root.has(field)
                 ? root.getAsJsonObject(field)
                 : new JsonObject();
 
-        // Add or overwrite weight/density
         fieldObj.addProperty(type.name().toLowerCase(), value);
 
-        // Put it back into root
         root.add(field, fieldObj);
 
         save(file, root);
@@ -46,7 +46,6 @@ public class WriteFile {
         File file = new File(fileName);
         JsonObject root = loadOrCreate(file);
 
-        // Ensure the field object exists
         JsonObject fieldObj = root.has(field)
                 ? root.getAsJsonObject(field)
                 : new JsonObject();
@@ -68,26 +67,21 @@ public class WriteFile {
             ensureParentDirectories(file.toPath());
 
             if (!file.exists()) {
-                // Create an empty JSON object file
                 save(file, new JsonObject());
                 return new JsonObject();
             }
 
             if (file.length() == 0L) {
-                // Empty file: treat as empty JSON object
                 return new JsonObject();
             }
 
             try (Reader reader = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8)) {
-                return GSON.fromJson(reader, JsonObject.class) != null
-                        ? GSON.fromJson(reader, JsonObject.class)
-                        : new JsonObject();
+                JsonObject result = GSON.fromJson(reader, JsonObject.class);
+                return result != null ? result : new JsonObject();
             } catch (JsonParseException e) {
-                // Malformed content: recover by returning empty object
                 return new JsonObject();
             }
         } catch (IOException ioe) {
-            // I/O problem: fail gracefully with an empty object; next save will try to write
             return new JsonObject();
         }
 
@@ -98,18 +92,18 @@ public class WriteFile {
         try {
             ensureParentDirectories(target);
 
-            Path temp = Files.createTempFile(target.getParent(), target.getFileName().toString(), ".tmp");
+            var tempPath = new File(target.getParent().toString() + File.pathSeparator + "tmp");
+
+            Path temp = Files.createTempFile(tempPath.toPath(), target.getFileName().toString(), ".tmp");
             try (Writer writer = Files.newBufferedWriter(temp, StandardCharsets.UTF_8)) {
                 GSON.toJson(root, writer);
             }
-            // Atomic replace where supported; otherwise best-effort replace
+
             Files.move(temp, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
         } catch (IOException e) {
-            // Best effort fallback: try direct write if atomic move failed earlier
             try (Writer writer = Files.newBufferedWriter(target, StandardCharsets.UTF_8)) {
                 GSON.toJson(root, writer);
             } catch (IOException ignored) {
-                // Swallow to avoid crashing the game; logging could be added if desired
             }
         }
 

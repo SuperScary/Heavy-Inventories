@@ -9,6 +9,7 @@ import java.util.function.DoubleSupplier;
  * Caches item/stack weights to avoid hitting disk/parsing every time.
  */
 public final class WeightCache {
+
     private static final ConcurrentHashMap<Item, Float> PER_ITEM = new ConcurrentHashMap<>();
 
     private WeightCache() {
@@ -22,7 +23,7 @@ public final class WeightCache {
     }
 
     /**
-     * Put/override a cached per-item weight (e.g., after a command).
+     * Put/override a cached per-item weight
      */
     public static void put(Item item, float weight) {
         PER_ITEM.put(item, weight);

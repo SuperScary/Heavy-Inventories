@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface HeavyInventories {
 
@@ -24,6 +25,8 @@ public interface HeavyInventories {
     Level getClientLevel();
 
     MinecraftServer getCurrentServer();
+
+    List<String> getModIds();
 
     static boolean isShiftPressed () {
         return Screen.hasShiftDown();

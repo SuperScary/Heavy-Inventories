@@ -101,7 +101,7 @@ public final class CalculateWeight {
      * @param itemStack The item to get the weight for.
      * @return A weight of the {@link ItemStack}.
      */
-    private static float from(ItemStack itemStack) {
+    public static float from(ItemStack itemStack) {
         return from(itemStack, itemStack.getCount());
     }
 

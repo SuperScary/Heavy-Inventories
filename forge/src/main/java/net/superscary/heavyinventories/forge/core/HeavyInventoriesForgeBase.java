@@ -2,12 +2,16 @@ package net.superscary.heavyinventories.forge.core;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.forgespi.language.IModInfo;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import net.superscary.heavyinventories.CommonClass;
 import net.superscary.heavyinventories.ModBase;
 import net.superscary.heavyinventories.forge.hooks.ModHooks;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class HeavyInventoriesForgeBase extends ModBase {
 
@@ -30,6 +34,11 @@ public abstract class HeavyInventoriesForgeBase extends ModBase {
     @Override
     public MinecraftServer getCurrentServer() {
         return ServerLifecycleHooks.getCurrentServer();
+    }
+
+    @Override
+    public List<String> getModIds() {
+        return ModList.get().getMods().stream().map(IModInfo::getModId).toList();
     }
 
 }

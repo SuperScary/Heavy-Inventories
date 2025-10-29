@@ -5,7 +5,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.superscary.heavyinventories.HeavyInventories;
 
-@EventBusSubscriber(modid = HeavyInventories.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = HeavyInventories.MOD_ID)
 public class DataGenerators {
 
     @SubscribeEvent

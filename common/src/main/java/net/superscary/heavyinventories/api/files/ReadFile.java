@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
+import net.superscary.heavyinventories.HeavyInventories;
 
 import java.io.File;
 import java.io.FileReader;
@@ -33,7 +34,12 @@ public class ReadFile {
         }
 
         try (FileReader reader = new FileReader(file)) {
-            JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
+            var jsonElement = JsonParser.parseReader(reader);
+            if (jsonElement == null || jsonElement.isJsonNull()) {
+                return 0.1f;
+            }
+            
+            JsonObject root = jsonElement.getAsJsonObject();
 
             ResourceLocation id = BuiltInRegistries.ITEM.getKey(item.asItem());
 
@@ -49,7 +55,10 @@ public class ReadFile {
             }
         } catch (IOException e) {
             // Fail gracefully
-            System.out.println("Failed to read file: " + fileName + ".");
+            HeavyInventories.LOGGER.warn("Failed to read file: {}!", fileName);
+        } catch (Exception e) {
+            // Handle any other JSON parsing errors
+            HeavyInventories.LOGGER.warn("Failed to parse JSON file: {}! Error: {}", fileName, e.getMessage());
         }
 
         return 0.1f; // default if not found
