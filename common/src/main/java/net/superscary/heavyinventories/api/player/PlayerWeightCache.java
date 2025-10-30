@@ -23,13 +23,11 @@ public final class PlayerWeightCache {
         var id = player.getUUID();
         var entry = CACHE.computeIfAbsent(id, k -> new Entry());
 
-        // Fast path: if not dirty and fingerprint matches, return cached value
         int fp = fingerprint(player);
         if (!entry.dirty && entry.lastFingerprint == fp) {
             return entry.weight;
         }
 
-        // Recompute
         float w = CalculateWeight.from(player);
         entry.weight = w;
         entry.lastFingerprint = fp;
@@ -80,7 +78,7 @@ public final class PlayerWeightCache {
 
     private static int mix(int h, ItemStack s) {
         if (s.isEmpty()) return h * 31 + 1;
-        // key by Item identity + count + basic damage
+
         int x = System.identityHashCode(s.getItem());
         x = 31 * x + s.getCount();
         if (s.isDamageableItem()) x = 31 * x + s.getDamageValue();

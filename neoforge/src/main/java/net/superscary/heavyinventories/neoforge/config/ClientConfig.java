@@ -1,6 +1,7 @@
 package net.superscary.heavyinventories.neoforge.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.superscary.heavyinventories.api.util.Measure;
 
 public class ClientConfig {
 
@@ -13,17 +14,5 @@ public class ClientConfig {
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     public Measure weightMeasure = Measure.LBS;
-
-    public enum Measure {
-        KGS,
-        LBS,
-        NONE;
-
-        @Override
-        public String toString() {
-            if (this == NONE) return "";
-            return name().toLowerCase();
-        }
-    }
 
 }

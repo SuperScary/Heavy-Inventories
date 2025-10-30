@@ -237,13 +237,8 @@ public class PlayerHolder {
         if (level == sureFootedAppliedLevel) return;
         sureFootedAppliedLevel = level;
 
-        // Base encumbrance multiplier
         float base = Functions.either(isOverEncumbered(), 0.0f, Functions.either(isEncumbered(), ENCUMBERED_BASE_MULT, 1.0f));
-
-        // Surefooted contributes a floor that depends on state
         float floor = Functions.either(isOverEncumbered(), SUREFOOTED_ENC_PERLVL * level, Functions.either(isEncumbered(), SUREFOOTED_ENC_PERLVL * level, 1.0f));
-
-        // The final multiplier is the larger of (base encumbrance) and (surefooted floor), clamped to 1
         this.sureFootedMult = Math.min(1.0f, Math.max(base, floor));
     }
 
