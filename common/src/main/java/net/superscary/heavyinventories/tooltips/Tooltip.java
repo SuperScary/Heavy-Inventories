@@ -16,7 +16,7 @@ public class Tooltip {
      * @return The list of tooltips with the weight tooltips added.
      */
     public static List<Component> addTooltips(List<Component> tooltip, ItemStack stack) {
-        float weight = CalculateWeight.from(stack);
+        float weight = CalculateWeight.from(new ItemStack(stack.getItem(), 1));
 
         tooltip.add(Component.translatable("tooltip.heavyinventories.item_weight", weight));
         if (stack.getCount() > 1) tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getCount()));

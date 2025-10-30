@@ -17,13 +17,13 @@ import java.util.List;
  * I cannot say for certain that this covers all possible recipes, but it should cover most.
  * Namely, brewing recipes, those are not in a datapack, so it is near impossible to get them without
  * a mod loader. That would have to be done on the mod loaders specific side.
- *
- * @apiNote This is not really that efficient, but it
- * should be fine for most cases. We should look at checking after each run of adding a recipe to the list if it contains
- * anything. If it does, we can just return the list, rather than continuing to iterate through and still returning the
- * first item recipe found. The resulting speed may be negligible, since it's all being cached anyway. We are not covering
- * {@link RecipeType#STONECUTTING} since it is not really a crafting recipe. We are also not covering
- * {@link RecipeType#CAMPFIRE_COOKING} since there is no point if we are already covering {@link RecipeType#SMELTING}.
+ * <p>
+ * This is not really that efficient, but it should be fine for most cases. We should look at checking after each run of
+ * adding a recipe to the list if it contains anything. If it does, we can just return the list, rather than continuing
+ * to iterate through and still returning the first item recipe found. The resulting speed may be negligible, since it's
+ * all being cached anyway. We are not covering {@link RecipeType#STONECUTTING} since it is not really a crafting recipe.
+ * We are also not covering {@link RecipeType#CAMPFIRE_COOKING} since there is no point if we are already covering
+ * {@link RecipeType#SMELTING}.
  *
  * @author SuperScary
  * @since 4.0.0

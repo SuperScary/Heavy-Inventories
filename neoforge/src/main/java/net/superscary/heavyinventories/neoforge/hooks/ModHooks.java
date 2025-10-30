@@ -2,6 +2,7 @@ package net.superscary.heavyinventories.neoforge.hooks;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
@@ -18,6 +19,10 @@ import net.superscary.heavyinventories.neoforge.config.ClientConfig;
 import net.superscary.heavyinventories.tooltips.Tooltip;
 
 public class ModHooks {
+
+    private static final float SUREFOOTED_OVERENCUMBERED_SPEED = 0.1f; // 10% when overencumbered
+    private static final float MIN_FLOOR_WITH_SUREFOOTED = 0.25f; // 25% when encumbered
+    private static final float ENCUMBRANCE_CURVE_K = 0.5f;
 
     public static void hookTooltip(ItemTooltipEvent event) {
         Tooltip.addTooltips(event.getToolTip(), event.getItemStack());
@@ -52,21 +57,34 @@ public class ModHooks {
     }
 
     public static void hookPlayerMove(MovementInputUpdateEvent event) {
-        var holder = PlayerHolder.getOrCreate(event.getEntity());
-        if (event.getEntity().isCreative()) return;
+        var player = event.getEntity();
+        if (player.isCreative()) return;
 
-        if (!holder.isEncumbered() && !holder.isOverEncumbered()) return;
+        var holder = PlayerHolder.getOrCreate(player);
+        boolean over = holder.isOverEncumbered();
 
-        var input = event.getInput();
-        var mult = holder.getSureFootedMult();
+        float enc01 = Mth.clamp(holder.getEncumberedPercentage() / 100f, 0f, 1f);
 
-        if (mult == 1.0f) {
-            if (holder.isOverEncumbered()) mult = 0.f;
-            else if (holder.isEncumbered()) mult = 0.25f;
+        // Surefooted floor per level (1.0f means none)
+        float surefootedFloor = holder.getSureFootedMult();
+        boolean hasSurefooted = surefootedFloor < 1.0f;
+
+        float mult;
+        if (over) {
+            mult = hasSurefooted ? SUREFOOTED_OVERENCUMBERED_SPEED : 0f;
+        } else {
+            mult = (float) Math.pow(1f - enc01, ENCUMBRANCE_CURVE_K);
+
+            if (hasSurefooted) {
+                mult = Math.max(mult, Math.max(surefootedFloor, MIN_FLOOR_WITH_SUREFOOTED));
+            }
         }
 
+        mult = Mth.clamp(mult, 0f, 1f);
+
+        var input = event.getInput();
         input.forwardImpulse *= mult;
-        input.leftImpulse *= mult;
+        input.leftImpulse    *= mult;
     }
 
     public static void hookPlayerEquip(LivingEquipmentChangeEvent event) {

@@ -25,12 +25,10 @@ public class WriteFile {
      * Writes or overwrites a single type (weight or density) under a field.
      */
     public static void writeToFile(String fileName, String field, DataType type, float value) {
-        File file = new File(fileName);
+        File file = new File(FileValidator.validate(fileName).toString());
         JsonObject root = loadOrCreate(file);
 
-        JsonObject fieldObj = root.has(field)
-                ? root.getAsJsonObject(field)
-                : new JsonObject();
+        JsonObject fieldObj = root.has(field) ? root.getAsJsonObject(field) : new JsonObject();
 
         fieldObj.addProperty(type.name().toLowerCase(), value);
 

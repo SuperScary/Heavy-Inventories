@@ -16,7 +16,7 @@ public class ReadFile {
 
     public static float get(ItemLike item, DataType type) {
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(item.asItem());
-        return readFromFile(Minecraft.getInstance().gameDirectory.getPath() + "/weights/" + id.getNamespace() + ".json", item, type);
+        return readFromFile(id.getNamespace(), item, type);
     }
 
     /**
@@ -28,7 +28,7 @@ public class ReadFile {
      * @return The value if found, otherwise 0.
      */
     public static float readFromFile(String fileName, ItemLike item, DataType type) {
-        File file = new File(fileName);
+        File file = new File(FileValidator.validate(fileName).toString());
         if (!file.exists()) {
             return 0.1f;
         }

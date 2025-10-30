@@ -32,13 +32,12 @@ public final class WeightOverride {
 
     public static void put(ItemLike itemLike, float weight) {
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(itemLike.asItem());
-        WriteFile.writeToFile(Minecraft.getInstance().gameDirectory.getPath() + "/weights/" + id.getNamespace() + ".json", id.getPath(), DataType.WEIGHT, weight);
+        WriteFile.writeToFile(id.getNamespace(), id.getPath(), DataType.WEIGHT, weight);
     }
 
-    /** For writing dumps
-     * @param items
-     * @param blocks
-     * @param level
+    /**
+     * For writing dumps
+     * @see net.superscary.heavyinventories.command.ModCommands
      */
     public static void putDumpFile(List<Item> items, List<Block> blocks, Level level) {
         for (Item item : items) {
