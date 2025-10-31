@@ -4,8 +4,12 @@
   "package": "net.superscary.heavyinventories.fabric.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "EquipmentMixin",
+    "PlayerInventoryMixin"
+  ],
   "client": [
+    "InputMixin"
   ],
   "server": [],
   "injectors": {

@@ -36,28 +36,26 @@ public class ModCommands {
                                         )
                                 )
                                 // TODO: Implement density calculation.
-                                .then(Commands.literal("density")
+                                /*.then(Commands.literal("density")
                                         .then(RequiredArgumentBuilder.<CommandSourceStack, Float>argument("density_argument", FloatArgumentType.floatArg())
                                                 .executes(ModCommands::executeSetDensityCommand)
                                         )
-                                )
-                                .then(Commands.literal("reload")
-                                        .then(Commands.literal("weight")
-                                                .executes(context -> {
-                                                    WeightCache.clearAll();
-                                                    return Command.SINGLE_SUCCESS;
-                                                })
-                                        )
-                                        .then(Commands.literal("players")
-                                                .executes(context -> {
-                                                    PlayerWeightCache.clearAll();
-                                                    return Command.SINGLE_SUCCESS;
-                                                })
-                                        )
-                                )
+                                )*/
                         )
                         .then(Commands.literal("reload")
                                 .executes(ModCommands::executeReloadCommand)
+                                .then(Commands.literal("weight")
+                                        .executes(context -> {
+                                            WeightCache.clearAll();
+                                            return Command.SINGLE_SUCCESS;
+                                        })
+                                )
+                                .then(Commands.literal("players")
+                                        .executes(context -> {
+                                            PlayerWeightCache.clearAll();
+                                            return Command.SINGLE_SUCCESS;
+                                        })
+                                )
                         )
                         // TODO: Implement dump command. Should dump all items from the given modid into the paired json file.
                         .then(Commands.literal("dump")

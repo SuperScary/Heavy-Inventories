@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.heavyinventories.surefooted"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "heavyinventories:surefooted"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 27,
+    "per_level_above_first": 14
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 22,
+    "per_level_above_first": 11
+  },
+  "slots": [
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 5
+}

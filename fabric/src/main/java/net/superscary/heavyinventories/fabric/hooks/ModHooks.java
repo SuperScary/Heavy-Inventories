@@ -1,16 +1,24 @@
 package net.superscary.heavyinventories.fabric.hooks;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.superscary.heavyinventories.api.events.PlayerEvents;
+import net.superscary.heavyinventories.api.movement.ModifyPlayerMove;
+import net.superscary.heavyinventories.api.util.Measure;
+import net.superscary.heavyinventories.command.ModCommands;
+import net.superscary.heavyinventories.fabric.callbacks.MovementInputUpdateEvent;
+import net.superscary.heavyinventories.fabric.callbacks.PlayerPickupItemCallback;
+import net.superscary.heavyinventories.gui.GraphicsRenderer;
 
 public class ModHooks {
 
     public static void registerHooks() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            assert client.player != null;
-            PlayerEvents.onPlayerTick(client.player);
+            if (client.player != null) PlayerEvents.onPlayerTick(client.player);
         });
 
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
@@ -19,7 +27,17 @@ public class ModHooks {
             }
         });
 
+        HudRenderCallback.EVENT.register((graphics, tracker) -> GraphicsRenderer.renderGui(graphics, Measure.LBS, Minecraft.getInstance()));
 
+        PlayerPickupItemCallback.EVENT.register((livingEntity, slot, stack) -> PlayerEvents.onPickupItem(livingEntity.player));
+
+        MovementInputUpdateEvent.EVENT.register((ModifyPlayerMove::hook));
+
+        registerCommands();
+    }
+
+    protected static void registerCommands() {
+        CommandRegistrationCallback.EVENT.register((commandDispatcher, commandBuildContext, commandSelection) -> ModCommands.registerCommands(commandDispatcher));
     }
 
 }

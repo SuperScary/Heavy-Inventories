@@ -45,5 +45,21 @@ loom {
             ideConfigGenerated(true)
             runDir('runs/server')
         }
+        datagen {
+            client()
+            setConfigName("Fabric DataGen")
+            ideConfigGenerated(true)
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("$rootDir/fabric/src/generated/resources")}"
+            vmArg "-Dfabric-api.datagen.modid=heavyinventories"
+        }
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir "$rootDir/fabric/src/generated/resources"
+        }
     }
 }

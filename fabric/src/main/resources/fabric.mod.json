@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "net.superscary.heavyinventories.fabric.core.HeavyInventoriesFabric"
+    ],
+    "fabric-datagen": [
+      "net.superscary.heavyinventories.fabric.datagen.DataGenerators"
     ]
   },
   "mixins": [
