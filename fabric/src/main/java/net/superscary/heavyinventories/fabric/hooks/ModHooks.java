@@ -3,7 +3,9 @@ package net.superscary.heavyinventories.fabric.hooks;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.superscary.heavyinventories.api.events.PlayerEvents;
@@ -11,6 +13,7 @@ import net.superscary.heavyinventories.api.movement.ModifyPlayerMove;
 import net.superscary.heavyinventories.api.util.Measure;
 import net.superscary.heavyinventories.command.ModCommands;
 import net.superscary.heavyinventories.fabric.callbacks.MovementInputUpdateEvent;
+import net.superscary.heavyinventories.fabric.callbacks.PlayerCraftCallback;
 import net.superscary.heavyinventories.fabric.callbacks.PlayerPickupItemCallback;
 import net.superscary.heavyinventories.gui.GraphicsRenderer;
 
@@ -32,6 +35,12 @@ public class ModHooks {
         PlayerPickupItemCallback.EVENT.register((livingEntity, slot, stack) -> PlayerEvents.onPickupItem(livingEntity.player));
 
         MovementInputUpdateEvent.EVENT.register((ModifyPlayerMove::hook));
+
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> PlayerEvents.logout(handler.player));
+
+        ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register((player, oldWorld, newWorld) -> PlayerEvents.playerChangedDimension(player));
+
+        PlayerCraftCallback.EVENT.register((player, stack) -> PlayerEvents.onCraft(player));
 
         registerCommands();
     }

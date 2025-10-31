@@ -6,6 +6,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.superscary.heavyinventories.api.events.PlayerEvents;
+import net.superscary.heavyinventories.api.movement.ModifyPlayerMove;
 import net.superscary.heavyinventories.api.player.PlayerHolder;
 import net.superscary.heavyinventories.command.ModCommands;
 import net.superscary.heavyinventories.tooltips.Tooltip;
@@ -41,14 +42,11 @@ public class ModHooks {
     }
 
     public static void hookPlayerMove(MovementInputUpdateEvent event) {
-        var holder = PlayerHolder.getOrCreate(event.getEntity());
-        if (holder.isEncumbered()) {
-            event.getInput().forwardImpulse = event.getInput().forwardImpulse * 0.25f;
-            event.getInput().leftImpulse = event.getInput().leftImpulse * 0.25f;
-        } else if (holder.isOverEncumbered()) {
-            event.getInput().forwardImpulse = 0;
-            event.getInput().leftImpulse = 0;
-        }
+        ModifyPlayerMove.hook(event.getEntity(), event.getInput());
+    }
+
+    public static void hookPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        PlayerEvents.logout(event.getEntity());
     }
 
     public static void hookCommands(RegisterCommandsEvent event) {

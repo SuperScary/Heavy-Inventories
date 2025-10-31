@@ -26,6 +26,7 @@ public abstract class HeavyInventoriesForgeBase extends ModBase {
         MinecraftForge.EVENT_BUS.addListener(ModHooks::hookOnCraft);
         MinecraftForge.EVENT_BUS.addListener(ModHooks::hookOnSmelt);
         MinecraftForge.EVENT_BUS.addListener(ModHooks::hookPlayerMove);
+        MinecraftForge.EVENT_BUS.addListener(ModHooks::hookPlayerLogout);
 
         MinecraftForge.EVENT_BUS.addListener(ModHooks::hookCommands);
     }
