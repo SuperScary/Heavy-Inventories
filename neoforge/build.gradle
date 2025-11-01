@@ -3,6 +3,11 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists
@@ -38,6 +43,9 @@ neoForge {
         "${mod_id}" {
             sourceSet sourceSets.main
         }
+    }
+    dependencies {
+        implementation("me.shedaniel.cloth:cloth-config-neoforge:15.0.140")
     }
 }
 

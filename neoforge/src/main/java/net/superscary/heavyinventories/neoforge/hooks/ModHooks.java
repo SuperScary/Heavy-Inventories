@@ -13,8 +13,8 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.superscary.heavyinventories.api.events.PlayerEvents;
 import net.superscary.heavyinventories.api.movement.ModifyPlayerMove;
 import net.superscary.heavyinventories.command.ModCommands;
+import net.superscary.heavyinventories.config.ConfigOptions;
 import net.superscary.heavyinventories.gui.GraphicsRenderer;
-import net.superscary.heavyinventories.neoforge.config.ClientConfig;
 import net.superscary.heavyinventories.tooltips.Tooltip;
 
 public class ModHooks {
@@ -68,8 +68,7 @@ public class ModHooks {
     }
 
     public static void hookGui(RenderGuiEvent.Post event) {
-        if (!ClientConfig.SHOW_WEIGHT_ON_SCREEN.get()) return;
-        GraphicsRenderer.renderGui(event.getGuiGraphics(), ClientConfig.WEIGHT_MEASURE.get(), Minecraft.getInstance());
+        GraphicsRenderer.renderGui(event.getGuiGraphics(), ConfigOptions.WEIGHT_MEASURE, Minecraft.getInstance());
     }
 
 }

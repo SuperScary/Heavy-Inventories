@@ -4,11 +4,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.superscary.heavyinventories.api.player.PlayerHolder;
-import net.superscary.heavyinventories.api.util.Measure;
+import net.superscary.heavyinventories.api.util.MeasuringSystem;
+import net.superscary.heavyinventories.config.ConfigOptions;
 
 public class GraphicsRenderer {
 
-    public static void renderGui(GuiGraphics graphics, Measure measurement, Minecraft instance) {
+    public static void renderGui(GuiGraphics graphics, MeasuringSystem measurement, Minecraft instance) {
+        if (!ConfigOptions.ENABLE_GUI_OVERLAY) return;
         if (instance.player == null || instance.player.isCreative() || instance.options.hideGui || instance.screen != null) return;
 
         int width = instance.getWindow().getGuiScaledWidth();
@@ -22,17 +24,17 @@ public class GraphicsRenderer {
         float pct = holder.getEncumberedPercentage(); // 0..100
 
         // Bottom line (numbers)
-        String main = String.format("%.1f/%.1f %s (%.1f%%)", cur, max, measurement, pct);
+        String main = String.format("%.1f/%.1f %s (%.1f%%)", cur, max, measurement.getSub(), pct);
 
         // Status line
         Component statusComp = null;
-        int statusColor = 0xFFFFFF;
+        int statusColor = ConfigOptions.NORMAL_TEXT_COLOR;
         if (holder.isOverEncumbered()) {
             statusComp = Component.translatable("chat.heavyinventories.over_encumbered");
-            statusColor = 0xFF5555; // red
+            statusColor = ConfigOptions.OVER_ENCUMBERED_TEXT_COLOR;
         } else if (holder.isEncumbered()) {
             statusComp = Component.translatable("chat.heavyinventories.encumbered");
-            statusColor = 0xFFFF55; // yellow
+            statusColor = ConfigOptions.ENCUMBERED_TEXT_COLOR;
         }
 
         int mainW = instance.font.width(main);
@@ -50,7 +52,7 @@ public class GraphicsRenderer {
         }
 
         // Draw main
-        int mainColor = pct >= 100 ? 0xFF5555 : pct >= 90 ? 0xFFAA00 : pct >= 75 ? 0xFFFF55 : 0xFFFFFF;
+        int mainColor = pct >= 100 ? ConfigOptions.OVER_ENCUMBERED_TEXT_COLOR : pct >= 90 ? ConfigOptions.ENCUMBERED_TEXT_COLOR : pct >= 75 ? ConfigOptions.ENCUMBERED_TEXT_COLOR : ConfigOptions.NORMAL_TEXT_COLOR;
         int xMain = width - mainW - margin;
         graphics.drawString(instance.font, main, xMain, yTop, mainColor, true);
     }

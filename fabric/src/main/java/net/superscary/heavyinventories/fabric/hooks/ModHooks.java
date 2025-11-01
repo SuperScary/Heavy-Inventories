@@ -10,8 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.superscary.heavyinventories.api.events.PlayerEvents;
 import net.superscary.heavyinventories.api.movement.ModifyPlayerMove;
-import net.superscary.heavyinventories.api.util.Measure;
 import net.superscary.heavyinventories.command.ModCommands;
+import net.superscary.heavyinventories.config.ConfigOptions;
 import net.superscary.heavyinventories.fabric.callbacks.MovementInputUpdateEvent;
 import net.superscary.heavyinventories.fabric.callbacks.PlayerCraftCallback;
 import net.superscary.heavyinventories.fabric.callbacks.PlayerPickupItemCallback;
@@ -30,7 +30,7 @@ public class ModHooks {
             }
         });
 
-        HudRenderCallback.EVENT.register((graphics, tracker) -> GraphicsRenderer.renderGui(graphics, Measure.LBS, Minecraft.getInstance()));
+        HudRenderCallback.EVENT.register((graphics, tracker) -> GraphicsRenderer.renderGui(graphics, ConfigOptions.WEIGHT_MEASURE, Minecraft.getInstance()));
 
         PlayerPickupItemCallback.EVENT.register((livingEntity, slot, stack) -> PlayerEvents.onPickupItem(livingEntity.player));
 

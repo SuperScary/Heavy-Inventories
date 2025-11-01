@@ -24,8 +24,6 @@ public class ModifyPlayerMove {
 
         input.forwardImpulse *= mult;
         input.leftImpulse    *= mult;
-
-        System.out.println(input.forwardImpulse + " " + input.leftImpulse);
     }
 
     private static float getMultiplier(PlayerHolder holder, boolean over, float enc01) {

@@ -1,6 +1,7 @@
 package net.superscary.heavyinventories.platform;
 
 import net.superscary.heavyinventories.HeavyInventories;
+import net.superscary.heavyinventories.platform.services.IConfigScreenHelper;
 import net.superscary.heavyinventories.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -8,6 +9,7 @@ import java.util.ServiceLoader;
 public class Services {
 
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
+    public static final IConfigScreenHelper CONFIG_SCREEN = load(IConfigScreenHelper.class);
 
     public static <T> T load(Class<T> clazz) {
 

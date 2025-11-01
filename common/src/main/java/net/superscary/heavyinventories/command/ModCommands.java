@@ -14,7 +14,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.superscary.heavyinventories.HeavyInventories;
-import net.superscary.heavyinventories.api.config.ConfigScreens;
 import net.superscary.heavyinventories.api.player.PlayerWeightCache;
 import net.superscary.heavyinventories.api.weight.CalculateWeight;
 import net.superscary.heavyinventories.api.weight.WeightCache;
@@ -66,12 +65,17 @@ public class ModCommands {
     }
 
     protected static int executeOpenConfig(CommandContext<CommandSourceStack> context, String type) {
-        switch (type) {
-            case "client" -> ConfigScreens.openClientConfig();
-            case "server" -> ConfigScreens.openServerConfig();
-            case "common" -> ConfigScreens.openCommonConfig();
-            case null, default -> context.getSource().sendFailure(Component.translatable("command.heavyinventories.failure"));
+        var source = context.getSource();
+        var player = source.getPlayer();
+        
+        if (player == null) {
+            source.sendFailure(Component.translatable("command.heavyinventories.config.no_player"));
+            return 0;
         }
+
+        Services.CONFIG_SCREEN.sendOpenConfigPacket(player, type);
+        
+        source.sendSuccess(() -> Component.translatable("command.heavyinventories.config.success", type), true);
         return Command.SINGLE_SUCCESS;
     }
 

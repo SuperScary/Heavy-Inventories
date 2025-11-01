@@ -5,9 +5,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.MinecraftServer;
 import net.superscary.heavyinventories.CommonClass;
 import net.superscary.heavyinventories.ModBase;
-import net.superscary.heavyinventories.fabric.config.ModClientConfig;
 import net.superscary.heavyinventories.fabric.enchantments.ModEnchantmentEffects;
 import net.superscary.heavyinventories.fabric.hooks.ModHooks;
+import net.superscary.heavyinventories.fabric.platform.FabricConfigScreenHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -22,6 +22,8 @@ public abstract class HeavyInventoriesFabricBase extends ModBase {
 
         ServerLifecycleEvents.SERVER_STARTED.register(server -> currentServer = server);
         ServerLifecycleEvents.SERVER_STOPPED.register(server -> currentServer = null);
+
+        FabricConfigScreenHelper.registerPayloadType();
 
         ModHooks.registerHooks();
         ModEnchantmentEffects.register();

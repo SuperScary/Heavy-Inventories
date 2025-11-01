@@ -4,22 +4,18 @@ import net.minecraft.server.MinecraftServer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
-import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import net.neoforged.neoforgespi.language.IModInfo;
 import net.superscary.heavyinventories.CommonClass;
 import net.superscary.heavyinventories.ModBase;
 import net.superscary.heavyinventories.api.player.PlayerHolder;
-import net.superscary.heavyinventories.neoforge.config.ServerConfig;
+import net.superscary.heavyinventories.config.ConfigOptions;
 import net.superscary.heavyinventories.neoforge.enchantments.ModEnchantmentEffects;
 import net.superscary.heavyinventories.neoforge.hooks.ModHooks;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class HeavyInventoriesNeoForgeBase extends ModBase {
@@ -27,8 +23,6 @@ public abstract class HeavyInventoriesNeoForgeBase extends ModBase {
     public HeavyInventoriesNeoForgeBase(ModContainer modContainer, IEventBus modEventBus) {
         super();
         CommonClass.init();
-
-        modContainer.registerConfig(ModConfig.Type.COMMON, ServerConfig.SPEC);
 
         NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayer);
         NeoForge.EVENT_BUS.addListener(ModHooks::hookPlayerClone);
@@ -49,7 +43,7 @@ public abstract class HeavyInventoriesNeoForgeBase extends ModBase {
     }
 
     private static void postInitialization(FMLLoadCompleteEvent event) {
-        PlayerHolder.setWeightStarting(ServerConfig.STARTING_WEIGHT.get().floatValue());
+        PlayerHolder.setWeightStarting(ConfigOptions.PLAYER_STARTING_WEIGHT);
     }
 
     @Nullable

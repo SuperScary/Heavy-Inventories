@@ -4,6 +4,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.superscary.heavyinventories.HeavyInventories;
 import net.superscary.heavyinventories.api.weight.CalculateWeight;
+import net.superscary.heavyinventories.config.ConfigOptions;
 
 import java.util.List;
 
@@ -18,12 +19,12 @@ public class Tooltip {
     public static List<Component> addTooltips(List<Component> tooltip, ItemStack stack) {
         float weight = CalculateWeight.from(new ItemStack(stack.getItem(), 1));
 
-        tooltip.add(Component.translatable("tooltip.heavyinventories.item_weight", weight));
-        if (stack.getCount() > 1) tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getCount()));
+        tooltip.add(Component.translatable("tooltip.heavyinventories.item_weight", weight, ConfigOptions.WEIGHT_MEASURE.getSub()));
+        if (stack.getCount() > 1) tooltip.add(Component.translatable("tooltip.heavyinventories.item_stack_weight", weight * stack.getCount(), ConfigOptions.WEIGHT_MEASURE.getSub()));
 
         if (stack.getCount() < stack.getMaxStackSize()) {
             if (HeavyInventories.isShiftPressed()) {
-                tooltip.add(Component.translatable("tooltip.heavyinventories.item_max_stack_weight", weight * stack.getMaxStackSize()));
+                tooltip.add(Component.translatable("tooltip.heavyinventories.item_max_stack_weight", weight * stack.getMaxStackSize(), ConfigOptions.WEIGHT_MEASURE.getSub()));
             } else {
                 tooltip.add(Component.translatable("tooltip.heavyinventories.hold_shift"));
             }

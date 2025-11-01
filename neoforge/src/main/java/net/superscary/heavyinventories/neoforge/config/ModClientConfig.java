@@ -1,4 +1,4 @@
-package net.superscary.heavyinventories.fabric.config;
+package net.superscary.heavyinventories.neoforge.config;
 
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
@@ -6,9 +6,9 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.superscary.heavyinventories.api.util.MeasuringSystem;
 import net.superscary.heavyinventories.config.ConfigFileManager;
 import net.superscary.heavyinventories.config.ConfigOptions;
-import net.superscary.heavyinventories.api.util.MeasuringSystem;
 import net.superscary.heavyinventories.config.ConfigScreenOpener;
 
 public class ModClientConfig implements ConfigScreenOpener {
@@ -49,15 +49,15 @@ public class ModClientConfig implements ConfigScreenOpener {
             general.addEntry(entryBuilder.startColorField(Component.translatable("option.heavyinventories.encumbered_text_color"), ConfigOptions.ENCUMBERED_TEXT_COLOR)
                     .setDefaultValue(0xFFFF55)
                     .setTooltip(Component.translatable("option.heavyinventories.encumbered_text_color.tooltip"))
-                    .setSaveConsumer(newValue -> ConfigOptions.NORMAL_TEXT_COLOR = newValue)
+                    .setSaveConsumer(newValue -> ConfigOptions.ENCUMBERED_TEXT_COLOR = newValue)
                     .build());
 
             general.addEntry(entryBuilder.startColorField(Component.translatable("option.heavyinventories.over_encumbered_text_color"), ConfigOptions.OVER_ENCUMBERED_TEXT_COLOR)
                     .setDefaultValue(0xFF5555)
                     .setTooltip(Component.translatable("option.heavyinventories.over_encumbered_text_color.tooltip"))
-                    .setSaveConsumer(newValue -> ConfigOptions.NORMAL_TEXT_COLOR = newValue)
+                    .setSaveConsumer(newValue -> ConfigOptions.OVER_ENCUMBERED_TEXT_COLOR = newValue)
                     .build());
-
+            
             entriesInitialized = true;
         }
     }
