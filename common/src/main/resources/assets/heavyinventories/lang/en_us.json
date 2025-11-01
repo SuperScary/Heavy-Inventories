@@ -16,8 +16,10 @@
   "chat.heavyinventories.no_jump": "You cannot jump while %s!",
   "chat.heavyinventories.encumbered": "Encumbered",
   "chat.heavyinventories.over_encumbered": "Over Encumbered",
-  "chat.heavyinventories.command_set.failure": "Failed to set weight to %s!",
-  "chat.heavyinventories.command_set.success": "Successfully set weight to %s!",
+
+  "command.heavyinventories.command_set.failure": "Failed to set weight to %s!",
+  "command.heavyinventories.command_set.success": "Successfully set weight to %s!",
+  "command.heavyinventories.failure": "Failed to execute command!",
 
   "enchantment.heavyinventories.bracing": "Bracing",
   "enchantment.heavyinventories.reinforced": "Reinforced",

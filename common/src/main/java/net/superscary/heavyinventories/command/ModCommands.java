@@ -36,12 +36,6 @@ public class ModCommands {
                                                 .executes(ModCommands::executeSetWeightCommand)
                                         )
                                 )
-                                // TODO: Implement density calculation.
-                                /*.then(Commands.literal("density")
-                                        .then(RequiredArgumentBuilder.<CommandSourceStack, Float>argument("density_argument", FloatArgumentType.floatArg())
-                                                .executes(ModCommands::executeSetDensityCommand)
-                                        )
-                                )*/
                         )
                         .then(Commands.literal("reload")
                                 .executes(ModCommands::executeReloadCommand)
@@ -76,7 +70,7 @@ public class ModCommands {
             case "client" -> ConfigScreens.openClientConfig();
             case "server" -> ConfigScreens.openServerConfig();
             case "common" -> ConfigScreens.openCommonConfig();
-            case null, default -> context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_config.failure"));
+            case null, default -> context.getSource().sendFailure(Component.translatable("command.heavyinventories.failure"));
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -85,24 +79,24 @@ public class ModCommands {
         float number = FloatArgumentType.getFloat(context, "weight_argument");
 
         if (context.getSource().getPlayer() == null) {
-            context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_set.failure", number));
+            context.getSource().sendFailure(Component.translatable("command.heavyinventories.command_set.failure", number));
             return 0;
         }
         ItemStack stack = context.getSource().getPlayer().getItemInHand(context.getSource().getPlayer().getUsedItemHand());
         WeightOverride.put(stack.getItem(), number);
-        context.getSource().sendSuccess(() -> Component.translatable("chat.heavyinventories.command_set.success", number), true);
+        context.getSource().sendSuccess(() -> Component.translatable("command.heavyinventories.command_set.success", number), true);
         return Command.SINGLE_SUCCESS;
     }
 
     protected static int executeSetDensityCommand(CommandContext<CommandSourceStack> context) {
         float number = FloatArgumentType.getFloat(context, "density_argument");
         if (context.getSource().getPlayer() == null) {
-            context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_set.failure", number));
+            context.getSource().sendFailure(Component.translatable("command.heavyinventories.command_set.failure", number));
             return 0;
         }
         ItemStack stack = context.getSource().getPlayer().getItemInHand(context.getSource().getPlayer().getUsedItemHand());
         //WeightOverride.put(stack.getItem(), number);
-        context.getSource().sendSuccess(() -> Component.translatable("chat.heavyinventories.command_set.success", number), true);
+        context.getSource().sendSuccess(() -> Component.translatable("command.heavyinventories.command_set.success", number), true);
         return Command.SINGLE_SUCCESS;
     }
 
