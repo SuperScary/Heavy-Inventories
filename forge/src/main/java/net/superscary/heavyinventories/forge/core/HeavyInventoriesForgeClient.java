@@ -12,6 +12,7 @@ public class HeavyInventoriesForgeClient extends HeavyInventoriesForgeBase {
         super(modLoadingContext);
 
         MinecraftForge.EVENT_BUS.addListener(ModHooks::hookTooltip);
+        MinecraftForge.EVENT_BUS.addListener(ModHooks::hookGui);
     }
 
     @Override

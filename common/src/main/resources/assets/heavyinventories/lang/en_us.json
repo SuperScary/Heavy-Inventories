@@ -1,5 +1,10 @@
 {
   "title.heavyinventories.config": "Heavy Inventories Config",
+  "category.heavyinventories.general": "General",
+  "option.heavyinventories.weight_measure": "Weight Measuring System",
+  "option.heavyinventories.weight_measure.tooltip": "This option is purely cosmetic.",
+  "option.heavyinventories.enable_gui_overlay": "Enable GUI Overlay",
+  "option.heavyinventories.enable_gui_overlay.tooltip": "Show/hide the GUI overlay.",
 
   "tooltip.heavyinventories.item_weight": "Weight: %s",
   "tooltip.heavyinventories.item_density": "Density: %s",

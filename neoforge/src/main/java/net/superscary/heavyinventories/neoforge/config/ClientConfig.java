@@ -11,8 +11,10 @@ public class ClientConfig {
             .comment("The weight measurement system to use. This is purely cosmetic.")
             .defineEnum("weightMeasure", Measure.LBS);
 
-    public static final ModConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec.BooleanValue SHOW_WEIGHT_ON_SCREEN = BUILDER
+            .comment("Whether or not to show the player's weight on their screen.")
+            .define("showWeightOnScreen", true);
 
-    public Measure weightMeasure = Measure.LBS;
+    public static final ModConfigSpec SPEC = BUILDER.build();
 
 }

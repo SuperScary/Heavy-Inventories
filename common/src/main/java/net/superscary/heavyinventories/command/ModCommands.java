@@ -14,6 +14,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.superscary.heavyinventories.HeavyInventories;
+import net.superscary.heavyinventories.api.config.ConfigScreens;
 import net.superscary.heavyinventories.api.player.PlayerWeightCache;
 import net.superscary.heavyinventories.api.weight.CalculateWeight;
 import net.superscary.heavyinventories.api.weight.WeightCache;
@@ -64,7 +65,20 @@ public class ModCommands {
                                         .executes(ModCommands::executeDumpCommand)
                                 )
                         )
+                        .then(Commands.literal("config").then(RequiredArgumentBuilder.<CommandSourceStack, String>argument("config", StringArgumentType.string())
+                                .suggests(new ConfigSuggestionProvider())
+                                .executes(context -> executeOpenConfig(context, StringArgumentType.getString(context, "config")))))
         );
+    }
+
+    protected static int executeOpenConfig(CommandContext<CommandSourceStack> context, String type) {
+        switch (type) {
+            case "client" -> ConfigScreens.openClientConfig();
+            case "server" -> ConfigScreens.openServerConfig();
+            case "common" -> ConfigScreens.openCommonConfig();
+            case null, default -> context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_config.failure"));
+        }
+        return Command.SINGLE_SUCCESS;
     }
 
     protected static int executeSetWeightCommand(CommandContext<CommandSourceStack> context) {
@@ -72,7 +86,7 @@ public class ModCommands {
 
         if (context.getSource().getPlayer() == null) {
             context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_set.failure", number));
-            return Command.SINGLE_SUCCESS;
+            return 0;
         }
         ItemStack stack = context.getSource().getPlayer().getItemInHand(context.getSource().getPlayer().getUsedItemHand());
         WeightOverride.put(stack.getItem(), number);
@@ -84,7 +98,7 @@ public class ModCommands {
         float number = FloatArgumentType.getFloat(context, "density_argument");
         if (context.getSource().getPlayer() == null) {
             context.getSource().sendFailure(Component.translatable("chat.heavyinventories.command_set.failure", number));
-            return Command.SINGLE_SUCCESS;
+            return 0;
         }
         ItemStack stack = context.getSource().getPlayer().getItemInHand(context.getSource().getPlayer().getUsedItemHand());
         //WeightOverride.put(stack.getItem(), number);
@@ -104,7 +118,7 @@ public class ModCommands {
 
         if (!Services.PLATFORM.isModLoaded(modid)) {
             context.getSource().sendFailure(Component.literal(modid + " is invalid or not loaded!"));
-            return Command.SINGLE_SUCCESS;
+            return 0;
         }
 
         var items = RegistryHelper.getItemsFor(modid);
@@ -112,7 +126,7 @@ public class ModCommands {
 
         context.getSource().sendSystemMessage(Component.literal("Dumping " + modid + "..."));
         context.getSource().sendSystemMessage(Component.literal("Found " + items.size() + " items and " + blocks.size() + " blocks."));
-        
+
         var level = context.getSource().getLevel();
         WeightOverride.putDumpFile(items, blocks, level);
 
@@ -135,6 +149,16 @@ public class ModCommands {
             return builder.buildFuture();
         }
 
+    }
+
+    private static class ConfigSuggestionProvider implements SuggestionProvider<CommandSourceStack> {
+        @Override
+        public CompletableFuture<Suggestions> getSuggestions(CommandContext<CommandSourceStack> context, SuggestionsBuilder builder) {
+            builder.suggest("client");
+            builder.suggest("server");
+            builder.suggest("common");
+            return builder.buildFuture();
+        }
     }
 
 }

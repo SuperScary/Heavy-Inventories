@@ -68,6 +68,7 @@ public class ModHooks {
     }
 
     public static void hookGui(RenderGuiEvent.Post event) {
+        if (!ClientConfig.SHOW_WEIGHT_ON_SCREEN.get()) return;
         GraphicsRenderer.renderGui(event.getGuiGraphics(), ClientConfig.WEIGHT_MEASURE.get(), Minecraft.getInstance());
     }
 
